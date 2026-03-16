@@ -166,7 +166,8 @@ static void GameLoop(void) {
   GuiSlider(RECT(40 + 150 + 20 + 20, 110, 100, 20), "0", "100", &initial_len, 0,
             100);
 
-  controls_container.y = controls_container.y + controls_container.height + 10;
+  controls_container.y += controls_container.height + 10;
+  controls_container.height += 30;
   DrawRectangleRec(controls_container, Fade(SKYBLUE, 0.5f));
   DrawRectangleLinesEx(controls_container, 3, BLUE);
   controls_container.x += 10;
@@ -183,6 +184,12 @@ static void GameLoop(void) {
 
   DrawText("- HJKL to move camera(VIM motions)", controls_container.x,
            controls_container.y + 130, font_size, DARKGRAY);
+
+  DrawText("- Left Mouse Click and drag move camera", controls_container.x,
+           controls_container.y + 150, font_size, DARKGRAY);
+
+  DrawText("- Mouse scroll: adjust zoom", controls_container.x,
+           controls_container.y + 170, font_size, DARKGRAY);
 
   EndDrawing();
 }
